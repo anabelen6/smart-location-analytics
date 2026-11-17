@@ -1,0 +1,804 @@
+<title>Zonas gourmet París</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Spectral:wght@500;600&display=swap">
+<style>
+  :root {
+    --ground: #F3F6F5;
+    --panel: #FFFFFF;
+    --ink: #1C2B33;
+    --ink-soft: #56656C;
+    --line: #D9E1DF;
+    --navy: #1B4B6B;
+    --teal: #3E8E7E;
+    --green: #2E7D5B;
+    --alert: #C1440E;
+    --dot: rgba(28, 43, 51, 0.16);
+    --shortlist: #1B4B6B;
+    --scale-0: #A5CD90;
+    --scale-1: #61AA90;
+    --scale-2: #33858D;
+    --scale-3: #1E5D86;
+    --scale-4: #2C3172;
+    --zone-stroke: rgba(255, 255, 255, 0.85);
+    --focus: #2E7D5B;
+    --up: #2E7D5B;
+    --down: #9A3A12;
+    --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --font-display: "Spectral", Georgia, "Times New Roman", serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #0E181D;
+      --panel: #15232A;
+      --ink: #E4ECEA;
+      --ink-soft: #9DB0B2;
+      --line: #25373F;
+      --navy: #8CBCDB;
+      --teal: #6BBFA9;
+      --green: #7FC4A0;
+      --alert: #E4773F;
+      --dot: rgba(228, 236, 234, 0.14);
+      --shortlist: #8CBCDB;
+      --scale-0: #A5CD90;
+      --scale-1: #61AA90;
+      --scale-2: #33858D;
+      --scale-3: #1E5D86;
+      --scale-4: #2C3172;
+      --zone-stroke: rgba(14, 24, 29, 0.9);
+      --focus: #7FC4A0;
+      --up: #7FC4A0;
+      --down: #F09A6B;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #0E181D;
+    --panel: #15232A;
+    --ink: #E4ECEA;
+    --ink-soft: #9DB0B2;
+    --line: #25373F;
+    --navy: #8CBCDB;
+    --teal: #6BBFA9;
+    --green: #7FC4A0;
+    --alert: #E4773F;
+    --dot: rgba(228, 236, 234, 0.14);
+    --shortlist: #8CBCDB;
+    --scale-0: #A5CD90;
+    --scale-1: #61AA90;
+    --scale-2: #33858D;
+    --scale-3: #1E5D86;
+    --scale-4: #2C3172;
+    --zone-stroke: rgba(14, 24, 29, 0.9);
+    --focus: #7FC4A0;
+    --up: #7FC4A0;
+    --down: #F09A6B;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .wrap {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 20px 32px;
+    display: grid;
+    gap: 16px;
+  }
+  header.top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 8px 24px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin: 0 0 2px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.15;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+  .facts b { color: var(--ink); font-family: var(--font-mono); font-weight: 500; }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 270px minmax(0, 1fr) 310px;
+    gap: 16px;
+    align-items: start;
+  }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px;
+    display: grid;
+    gap: 14px;
+    min-width: 0;
+  }
+  .panel h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0;
+  }
+  .hint { color: var(--ink-soft); font-size: 12.5px; margin: 0; }
+
+  /* weights */
+  .weight { display: grid; gap: 4px; }
+  .weight-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .weight label { font-weight: 600; font-size: 13px; }
+  .weight .pct { font-family: var(--font-mono); font-size: 13px; color: var(--navy); font-variant-numeric: tabular-nums; }
+  .weight .sub { font-size: 11.5px; color: var(--ink-soft); }
+  input[type="range"] { width: 100%; accent-color: var(--teal); margin: 0; }
+  .btn {
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 7px 12px;
+    cursor: pointer;
+  }
+  .btn:hover { border-color: var(--teal); }
+  .btn:disabled { opacity: 0.45; cursor: default; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .layers { display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .layers h3 { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin: 0; }
+  .check { display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer; }
+  .swatch { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+
+  /* map */
+  .map-panel { padding: 0; overflow: hidden; gap: 0; }
+  .map-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px 16px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .legend { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-soft); }
+  .legend .ramp { width: 120px; height: 8px; border-radius: 4px; }
+  .legend .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+  .zoom { display: flex; gap: 4px; }
+  .zoom .btn { padding: 3px 10px; font-family: var(--font-mono); }
+  .map {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    max-width: 100%;
+    touch-action: none;
+    cursor: grab;
+    user-select: none;
+  }
+  .map.dragging { cursor: grabbing; }
+  .map canvas, .map svg, .map .tiles { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .map .tiles { z-index: 0; isolation: isolate; }
+  .map .tiles { overflow: hidden; pointer-events: none; }
+  .map #tiles { background: var(--ground); }
+  .map .tiles img { position: absolute; max-width: none; user-select: none; }
+  .attribution {
+    position: absolute; right: 0; bottom: 0; padding: 1px 6px;
+    font-size: 10.5px; color: var(--ink-soft); background: var(--panel); opacity: 0.85;
+    border-top-left-radius: 4px;
+  }
+  .attribution a { color: inherit; }
+  .zone { fill-opacity: 0.72; stroke: var(--zone-stroke); stroke-width: 0.8; vector-effect: non-scaling-stroke; cursor: pointer; }
+  .zone:hover { stroke: var(--ink); stroke-width: 1.4; }
+  .zone.selected { stroke: var(--ink); stroke-width: 2.4; }
+  .badge circle { fill: var(--panel); stroke: var(--navy); stroke-width: 1.5; }
+  .badge text { font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; fill: var(--navy); text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+  .badge { cursor: pointer; }
+  .badge.selected circle { fill: var(--navy); }
+  .badge.selected text { fill: var(--panel); }
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 6px 9px;
+    font-size: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    white-space: nowrap;
+    transform: translate(12px, 12px);
+  }
+  .tooltip b { font-family: var(--font-mono); font-weight: 500; }
+  .map-foot { padding: 8px 16px 12px; font-size: 11.5px; color: var(--ink-soft); }
+
+  /* ranking */
+  .rank-list { list-style: none; margin: 0; padding: 0; display: grid; }
+  .rank-list li button {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 26px minmax(0, 1fr) auto 38px;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 6px;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+  }
+  .rank-list li:last-child button { border-bottom: 0; }
+  .rank-list li button:hover { background: var(--ground); }
+  .rank-list li button[aria-pressed="true"] { background: var(--ground); box-shadow: inset 3px 0 0 var(--navy); }
+  .rank-no { font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); text-align: right; font-variant-numeric: tabular-nums; }
+  .rank-name { min-width: 0; }
+  .rank-name .z { font-weight: 600; font-size: 13px; }
+  .rank-name .n { font-size: 11.5px; color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+  .rank-score { font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .delta { font-family: var(--font-mono); font-size: 11px; text-align: right; font-variant-numeric: tabular-nums; }
+  .delta.up { color: var(--up); }
+  .delta.down { color: var(--down); }
+  .delta.same { color: var(--ink-soft); }
+
+  /* detail */
+  .detail-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: start; gap: 8px 20px; }
+  .detail-head h2 { font-size: 20px; }
+  .detail-head .where { color: var(--ink-soft); font-size: 13px; margin: 2px 0 0; }
+  .big { text-align: right; }
+  .big .v { font-family: var(--font-mono); font-size: 30px; line-height: 1; color: var(--navy); font-variant-numeric: tabular-nums; }
+  .big .l { font-size: 12px; color: var(--ink-soft); }
+  .dims { display: grid; gap: 10px; }
+  .dim {
+    display: grid;
+    grid-template-columns: minmax(140px, 1.1fr) minmax(0, 1.4fr) 64px;
+    align-items: center;
+    gap: 6px 14px;
+  }
+  .dim .name { font-weight: 600; font-size: 13px; }
+  .dim .raw { font-size: 12px; color: var(--ink-soft); }
+  .dim .raw b { font-family: var(--font-mono); font-weight: 500; color: var(--ink); }
+  .bar { height: 8px; border-radius: 4px; background: var(--ground); border: 1px solid var(--line); overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--teal); border-radius: 4px; }
+  .dim .pts { font-family: var(--font-mono); font-size: 12.5px; text-align: right; font-variant-numeric: tabular-nums; }
+  .dim .pts small { display: block; font-family: var(--font-body); font-size: 10.5px; color: var(--ink-soft); }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 12.5px; color: var(--ink-soft); border-top: 1px solid var(--line); padding-top: 12px; }
+  .meta b { font-family: var(--font-mono); font-weight: 500; color: var(--ink); }
+
+  footer.note { font-size: 12px; color: var(--ink-soft); max-width: 110ch; display: grid; gap: 6px; }
+  footer.note p { margin: 0; }
+  code { font-family: var(--font-mono); font-size: 0.92em; }
+
+  @media (max-width: 1180px) {
+    .layout { grid-template-columns: 250px minmax(0, 1fr); }
+    .rank-panel { grid-column: 1 / -1; }
+  }
+  @media (max-width: 760px) {
+    .wrap { padding-inline: 16px; }
+    .layout { grid-template-columns: minmax(0, 1fr); }
+    .map { aspect-ratio: 1 / 1; }
+    .dim { grid-template-columns: minmax(0, 1fr) 56px; }
+    .dim .bar { grid-column: 1 / -1; grid-row: 2; }
+    .big { text-align: left; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <p class="eyebrow">Geomarketing · tienda gourmet</p>
+      <h1>¿Dónde abrir la tienda gourmet en París?</h1>
+    </div>
+    <div class="facts" id="facts"></div>
+  </header>
+
+  <div class="layout">
+    <aside class="panel" aria-labelledby="weights-title">
+      <h2 id="weights-title">Pesos del índice</h2>
+      <p class="hint">Ajusta la importancia de cada criterio. Los pesos se normalizan para sumar 100&nbsp;%, y el mapa y el ranking se actualizan al instante.</p>
+      <div id="weights" class="dims"></div>
+      <button class="btn" id="reset" type="button">Restablecer pesos por defecto</button>
+      <div class="layers">
+        <h3>Capas del mapa</h3>
+        <label class="check"><input type="checkbox" id="layer-listings" checked> <span class="swatch" style="background: var(--ink-soft)"></span> Alojamientos (fondo)</label>
+        <label class="check"><input type="checkbox" id="layer-shortlist"> <span class="swatch" style="background: var(--shortlist)"></span> <span id="shortlist-label">Shortlist high-standing</span></label>
+        <label class="check"><input type="checkbox" id="layer-competitors"> <span class="swatch" style="background: var(--alert)"></span> Competidores gourmet</label>
+      </div>
+    </aside>
+
+    <section class="panel map-panel" aria-label="Mapa de zonas">
+      <div class="map-bar">
+        <div class="legend"><span>Índice</span><span class="num" id="leg-min"></span><span class="ramp" id="ramp"></span><span class="num" id="leg-max"></span></div>
+        <div class="zoom">
+          <button class="btn" type="button" id="zoom-in" aria-label="Acercar">+</button>
+          <button class="btn" type="button" id="zoom-out" aria-label="Alejar">−</button>
+          <button class="btn" type="button" id="zoom-reset">Encuadrar</button>
+        </div>
+      </div>
+      <div class="map" id="map">
+        <div class="tiles" id="tiles"></div>
+        <canvas id="dots"></canvas>
+        <svg id="svg" role="img" aria-label="Zonas de mercado coloreadas por índice de oportunidad"></svg>
+        <div class="tiles labels" id="labels"></div>
+        <div class="tooltip" id="tip" hidden></div>
+        <div class="attribution">Mapa base: Esri, HERE, Garmin, © colaboradores de <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></div>
+      </div>
+      <p class="map-foot">Cada polígono es una zona de mercado (HDBSCAN) coloreada por su índice; los números marcan el Top&nbsp;15. Arrastra para desplazarte y usa la rueda o los botones para acercar. El mapa base necesita conexión a internet; sin ella, las zonas se siguen mostrando sobre fondo liso.</p>
+    </section>
+
+    <aside class="panel rank-panel" aria-labelledby="rank-title">
+      <h2 id="rank-title">Top 15 zonas</h2>
+      <p class="hint">Flechas: cambio de posición respecto a los pesos por defecto.</p>
+      <ol class="rank-list" id="ranking"></ol>
+    </aside>
+  </div>
+
+  <section class="panel" id="detail" aria-live="polite"></section>
+
+  <footer class="note">
+    <p><b>Cómo se calcula.</b> Índice (0–100) = suma ponderada de cinco criterios escalados de 0 a 1 entre las zonas de París (MinMax); la competencia y la distancia al transporte se invierten para que un valor más alto signifique siempre «mejor». Con los pesos por defecto reproduce el ranking del análisis.</p>
+    <p><b>Fuentes.</b> Alojamientos y reseñas de Airbnb (2008–2021), comercios gourmet y transporte de OpenStreetMap, renta media por habitante de INSEE Filosofi 2019 (celdas de 200&nbsp;m). Direcciones de Nominatim para las 15 zonas del ranking por defecto. El índice prioriza zonas; no es una previsión de ventas.</p>
+  </footer>
+</div>
+
+<script>
+const DATA = "__DASHBOARD_DATA__";
+
+const DIMS = [
+  { key: "score", label: "Posicionamiento high-standing", sub: "score medio de los alojamientos", unit: "score medio (0–1)", invert: false,
+    fmt: v => v.toFixed(2).replace(".", ",") },
+  { key: "cannibalization", label: "Baja competencia gourmet", sub: "competidores por alojamiento", unit: "competidores por alojamiento", invert: true,
+    fmt: v => v.toFixed(3).replace(".", ",") },
+  { key: "accessibility", label: "Accesibilidad", sub: "metros al transporte más cercano", unit: "al transporte más cercano", invert: true,
+    fmt: v => Math.round(v).toLocaleString("es-ES") + " m" },
+  { key: "income", label: "Renta del barrio", sub: "€ por habitante y año", unit: "por habitante y año", invert: false,
+    fmt: v => Math.round(v).toLocaleString("es-ES") + " €" },
+  { key: "demand", label: "Demanda reciente", sub: "reviews recientes por alojamiento", unit: "reviews recientes por alojamiento", invert: false,
+    fmt: v => v.toFixed(1).replace(".", ",") },
+];
+const TOP_N = 15;
+const fmt1 = v => v.toFixed(1).replace(".", ",");
+const int = v => Math.round(v).toLocaleString("es-ES");
+
+const zones = DATA.zones;
+const byId = new Map(zones.map(z => [z.id, z]));
+const defaultWeights = Object.fromEntries(DIMS.map(d => [d.key, Math.round(DATA.weights[d.key] * 100)]));
+const state = { weights: { ...defaultWeights }, selected: null, view: { k: 1, x: 0, y: 0 } };
+
+/* ---------- index ---------- */
+function normWeights(w) {
+  const total = DIMS.reduce((s, d) => s + w[d.key], 0) || 1;
+  return Object.fromEntries(DIMS.map(d => [d.key, w[d.key] / total]));
+}
+function subScore(z, d) { return d.invert ? 1 - z.scaled[d.key] : z.scaled[d.key]; }
+function computeRanking(w) {
+  const nw = normWeights(w);
+  const scored = zones.map(z => ({
+    z, index: 100 * DIMS.reduce((s, d) => s + nw[d.key] * subScore(z, d), 0),
+  }));
+  scored.sort((a, b) => b.index - a.index);
+  const rank = new Map(scored.map((s, i) => [s.z.id, i + 1]));
+  const index = new Map(scored.map(s => [s.z.id, s.index]));
+  return { scored, rank, index, nw };
+}
+const defaultRanking = computeRanking(defaultWeights);
+let current = defaultRanking;
+
+/* ---------- facts ---------- */
+document.getElementById("facts").innerHTML =
+  `<span><b>${zones.length}</b> zonas de mercado</span>` +
+  `<span><b>${int(DATA.listings.length / 2)}</b> alojamientos</span>` +
+  `<span><b>${int(DATA.shortlist.length)}</b> high-standing</span>` +
+  `<span><b>${int(DATA.competitors.length)}</b> comercios gourmet</span>`;
+document.getElementById("shortlist-label").textContent =
+  `Shortlist high-standing (score ≥ ${String(DATA.score_threshold).replace(".", ",")})`;
+
+/* ---------- weights UI ---------- */
+const weightsEl = document.getElementById("weights");
+weightsEl.innerHTML = DIMS.map(d => `
+  <div class="weight">
+    <div class="weight-head"><label for="w-${d.key}">${d.label}</label><span class="pct" id="p-${d.key}"></span></div>
+    <input type="range" id="w-${d.key}" min="0" max="60" step="1" value="${state.weights[d.key]}">
+    <span class="sub">${d.sub}</span>
+  </div>`).join("");
+DIMS.forEach(d => {
+  document.getElementById(`w-${d.key}`).addEventListener("input", e => {
+    state.weights[d.key] = Number(e.target.value);
+    update();
+  });
+});
+document.getElementById("reset").addEventListener("click", () => {
+  state.weights = { ...defaultWeights };
+  DIMS.forEach(d => { document.getElementById(`w-${d.key}`).value = state.weights[d.key]; });
+  update();
+});
+
+/* ---------- colour scale ---------- */
+let stops = [];
+function readStops() {
+  const cs = getComputedStyle(document.documentElement);
+  const hex = [0, 1, 2, 3, 4].map(i => cs.getPropertyValue(`--scale-${i}`).trim());
+  stops = hex.map(hexToRgb);
+  document.getElementById("ramp").style.background = `linear-gradient(90deg, ${hex.join(",")})`;
+}
+function hexToRgb(h) {
+  const m = h.replace("#", "");
+  return [0, 2, 4].map(i => parseInt(m.slice(i, i + 2), 16));
+}
+function colourAt(t) {
+  t = Math.max(0, Math.min(1, t));
+  const n = stops.length - 1;
+  const seg = Math.min(n - 1, Math.floor(t * n));
+  const f = t * n - seg;
+  const a = stops[seg], b = stops[seg + 1];
+  return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * f)).join(",")})`;
+}
+
+/* ---------- map geometry ---------- */
+const mapEl = document.getElementById("map");
+const canvas = document.getElementById("dots");
+const svg = document.getElementById("svg");
+const tip = document.getElementById("tip");
+const NS = "http://www.w3.org/2000/svg";
+const L = DATA.listings;
+// Frame the map on the 0.3-99.7 % range of listing coordinates, so a few outlying
+// listings do not shrink the city into the middle of the panel.
+const lons = [], lats = [];
+for (let i = 0; i < L.length; i += 2) { lons.push(L[i]); lats.push(L[i + 1]); }
+lons.sort((a, b) => a - b); lats.sort((a, b) => a - b);
+const q = (arr, p) => arr[Math.min(arr.length - 1, Math.floor(p * arr.length))];
+const minLon = q(lons, 0.003), maxLon = q(lons, 0.997), minLat = q(lats, 0.003), maxLat = q(lats, 0.997);
+// Web Mercator in world units (0-1), the projection used by the basemap tiles.
+const mercX = lon => (lon + 180) / 360;
+const mercY = lat => {
+  const r = lat * Math.PI / 180;
+  return (1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2;
+};
+const X0 = mercX(minLon), X1 = mercX(maxLon), Y0 = mercY(maxLat), Y1 = mercY(minLat);
+let W = 0, H = 0, base = { s: 1, ox: 0, oy: 0 };
+function fit() {
+  const r = mapEl.getBoundingClientRect();
+  W = r.width; H = r.height;
+  const pad = 14;
+  const dx = X1 - X0, dy = Y1 - Y0;
+  const s = Math.min((W - 2 * pad) / dx, (H - 2 * pad) / dy);
+  base = { s, ox: (W - dx * s) / 2, oy: (H - dy * s) / 2 };
+}
+const px = lon => base.ox + (mercX(lon) - X0) * base.s;
+const py = lat => base.oy + (mercY(lat) - Y0) * base.s;
+const sx = x => x * state.view.k + state.view.x;
+const sy = y => y * state.view.k + state.view.y;
+
+const gZones = document.createElementNS(NS, "g");
+const gBadges = document.createElementNS(NS, "g");
+svg.append(gZones, gBadges);
+const zonePaths = new Map();
+zones.forEach(z => {
+  const p = document.createElementNS(NS, "path");
+  p.setAttribute("class", "zone");
+  p.dataset.id = z.id;
+  zonePaths.set(z.id, p);
+  gZones.appendChild(p);
+});
+function buildPaths() {
+  zones.forEach(z => {
+    const d = z.hull.map(([lon, lat], i) => `${i ? "L" : "M"}${px(lon).toFixed(1)},${py(lat).toFixed(1)}`).join("") + "Z";
+    zonePaths.get(z.id).setAttribute("d", d);
+  });
+}
+
+function drawDots() {
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+  const ctx = canvas.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+  const cs = getComputedStyle(document.documentElement);
+  const k = state.view.k;
+  if (document.getElementById("layer-listings").checked) {
+    ctx.fillStyle = cs.getPropertyValue("--dot").trim();
+    const r = Math.max(1, Math.min(2.2, 0.9 * Math.sqrt(k)));
+    for (let i = 0; i < L.length; i += 2) {
+      const x = sx(px(L[i])), y = sy(py(L[i + 1]));
+      if (x < -2 || y < -2 || x > W + 2 || y > H + 2) continue;
+      ctx.fillRect(x - r / 2, y - r / 2, r, r);
+    }
+  }
+  if (document.getElementById("layer-shortlist").checked) {
+    ctx.fillStyle = cs.getPropertyValue("--shortlist").trim();
+    DATA.shortlist.forEach(j => {
+      ctx.beginPath();
+      ctx.arc(sx(px(L[2 * j])), sy(py(L[2 * j + 1])), 2.6, 0, Math.PI * 2);
+      ctx.fill();
+    });
+  }
+}
+function drawCompetitors() {
+  // drawn in the SVG badge layer's canvas pass so they sit above the zones
+  const ctx = overlay.getContext("2d");
+  const dpr = window.devicePixelRatio || 1;
+  overlay.width = Math.round(W * dpr); overlay.height = Math.round(H * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+  if (!document.getElementById("layer-competitors").checked) return;
+  ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--alert").trim();
+  ctx.globalAlpha = 0.8;
+  DATA.competitors.forEach(([lon, lat]) => {
+    ctx.beginPath();
+    ctx.arc(sx(px(lon)), sy(py(lat)), 2.2, 0, Math.PI * 2);
+    ctx.fill();
+  });
+}
+const overlay = document.createElement("canvas");
+overlay.style.pointerEvents = "none";
+mapEl.insertBefore(overlay, tip);
+
+/* ---------- basemap tiles (Esri Canvas: gray base below the zones, labels above) ---------- */
+// Esri serves these tiles without an API key, so the dashboard also works when opened
+// as a local file (CARTO and OSM tiles need a Referer header, which file:// never sends).
+const TILE_MAX_Z = 16;  // deepest zoom level of the Canvas services; beyond it tiles are upscaled
+const tileLayers = [
+  { el: document.getElementById("tiles"), service: "Base", imgs: new Map() },
+  { el: document.getElementById("labels"), service: "Reference", imgs: new Map() },
+];
+function tileTheme() {
+  const t = document.documentElement.dataset.theme;
+  const dark = t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return dark ? "Dark" : "Light";
+}
+let tileFrame = 0;
+function scheduleTiles() {
+  if (tileFrame) return;
+  tileFrame = requestAnimationFrame(() => { tileFrame = 0; drawTiles(); });
+}
+function drawTiles() {
+  const S = base.s * state.view.k;  // screen px per world unit
+  const z = Math.max(0, Math.min(TILE_MAX_Z, Math.round(Math.log2(S / 256))));
+  const n = 2 ** z;
+  const ux = xs => ((xs - state.view.x) / state.view.k - base.ox) / base.s + X0;  // screen -> world
+  const uy = ys => ((ys - state.view.y) / state.view.k - base.oy) / base.s + Y0;
+  const tx0 = Math.max(0, Math.floor(ux(0) * n)), tx1 = Math.min(n - 1, Math.floor(ux(W) * n));
+  const ty0 = Math.max(0, Math.floor(uy(0) * n)), ty1 = Math.min(n - 1, Math.floor(uy(H) * n));
+  const theme = tileTheme();
+  const place = (img, tz, tx, ty) => {
+    const sz = S / 2 ** tz;
+    img.style.left = `${sx(base.ox + (tx / 2 ** tz - X0) * base.s)}px`;
+    img.style.top = `${sy(base.oy + (ty / 2 ** tz - Y0) * base.s)}px`;
+    img.style.width = img.style.height = `${sz + 0.5}px`;  // +0.5 hides hairline seams
+  };
+  tileLayers.forEach(layer => {
+    const svc = `World_${theme}_Gray_${layer.service}`;
+    const wanted = new Set();
+    let pending = 0;
+    for (let tx = tx0; tx <= tx1; tx++) for (let ty = ty0; ty <= ty1; ty++) {
+      const key = `${svc}/${z}/${tx}/${ty}`;
+      wanted.add(key);
+      let img = layer.imgs.get(key);
+      if (!img) {
+        img = new Image();
+        img.alt = ""; img.draggable = false;
+        img.onload = () => { img.dataset.ok = "1"; scheduleTiles(); };
+        img.onerror = () => { img.dataset.ok = "0"; };
+        img.src = `https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/${svc}/MapServer/tile/${z}/${ty}/${tx}`;
+        Object.assign(img.dataset, { z, x: tx, y: ty, svc });
+        layer.imgs.set(key, img);
+        layer.el.appendChild(img);
+      }
+      if (!img.dataset.ok) pending++;
+      img.style.zIndex = 1;
+      place(img, z, tx, ty);
+    }
+    // Keep the previous zoom level's tiles underneath until the new level has loaded,
+    // so zooming does not flash an empty background.
+    layer.imgs.forEach((img, key) => {
+      if (wanted.has(key)) return;
+      if (pending && img.dataset.ok === "1" && img.dataset.svc === svc) {
+        img.style.zIndex = 0;
+        place(img, +img.dataset.z, +img.dataset.x, +img.dataset.y);
+      } else {
+        img.remove(); layer.imgs.delete(key);
+      }
+    });
+  });
+}
+
+function applyView() {
+  const { k, x, y } = state.view;
+  drawTiles();
+  gZones.setAttribute("transform", `translate(${x},${y}) scale(${k})`);
+  drawBadges();
+  drawDots();
+  drawCompetitors();
+}
+
+function drawBadges() {
+  gBadges.replaceChildren();
+  current.scored.slice(0, TOP_N).forEach((s, i) => {
+    const g = document.createElementNS(NS, "g");
+    g.setAttribute("class", "badge" + (s.z.id === state.selected ? " selected" : ""));
+    g.setAttribute("transform", `translate(${sx(px(s.z.lon)).toFixed(1)},${sy(py(s.z.lat)).toFixed(1)})`);
+    g.dataset.id = s.z.id;
+    const c = document.createElementNS(NS, "circle"); c.setAttribute("r", 9.5);
+    const t = document.createElementNS(NS, "text"); t.textContent = i + 1;
+    g.append(c, t);
+    gBadges.appendChild(g);
+  });
+}
+
+function recolour() {
+  const vals = current.scored.map(s => s.index);
+  const lo = Math.min(...vals), hi = Math.max(...vals);
+  zones.forEach(z => {
+    const t = (current.index.get(z.id) - lo) / (hi - lo || 1);
+    zonePaths.get(z.id).setAttribute("fill", colourAt(t));
+    zonePaths.get(z.id).classList.toggle("selected", z.id === state.selected);
+  });
+  document.getElementById("leg-min").textContent = fmt1(lo);
+  document.getElementById("leg-max").textContent = fmt1(hi);
+}
+
+/* ---------- interaction: hover, select, pan, zoom ---------- */
+function zoneFromEvent(e) {
+  const el = e.target.closest("[data-id]");
+  return el ? byId.get(Number(el.dataset.id)) : null;
+}
+svg.addEventListener("pointermove", e => {
+  if (drag) return;
+  const z = zoneFromEvent(e);
+  if (!z) { tip.hidden = true; return; }
+  const r = mapEl.getBoundingClientRect();
+  tip.style.left = `${e.clientX - r.left}px`;
+  tip.style.top = `${e.clientY - r.top}px`;
+  tip.innerHTML = `Zona ${z.id} · ${z.neighbourhood}<br>Índice <b>${fmt1(current.index.get(z.id))}</b> · puesto <b>${current.rank.get(z.id)}</b>`;
+  tip.hidden = false;
+});
+svg.addEventListener("pointerleave", () => { tip.hidden = true; });
+
+let drag = null, moved = false;
+mapEl.addEventListener("pointerdown", e => {
+  drag = { x: e.clientX, y: e.clientY, vx: state.view.x, vy: state.view.y };
+  moved = false;
+  mapEl.setPointerCapture(e.pointerId);
+});
+mapEl.addEventListener("pointermove", e => {
+  if (!drag) return;
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+  if (Math.abs(dx) + Math.abs(dy) > 3) { moved = true; mapEl.classList.add("dragging"); tip.hidden = true; }
+  if (moved) { state.view.x = drag.vx + dx; state.view.y = drag.vy + dy; schedule(); }
+});
+mapEl.addEventListener("pointerup", e => {
+  const wasDrag = moved;
+  drag = null; mapEl.classList.remove("dragging");
+  if (!wasDrag) {
+    const hit = document.elementFromPoint(e.clientX, e.clientY);
+    const el = hit && hit.closest("[data-id]");
+    if (el) select(Number(el.dataset.id));
+  }
+});
+mapEl.addEventListener("wheel", e => {
+  e.preventDefault();
+  const r = mapEl.getBoundingClientRect();
+  zoomAt(e.clientX - r.left, e.clientY - r.top, e.deltaY < 0 ? 1.2 : 1 / 1.2);
+}, { passive: false });
+function zoomAt(cx, cy, f) {
+  const k = Math.max(1, Math.min(24, state.view.k * f));
+  const real = k / state.view.k;
+  state.view.x = cx - (cx - state.view.x) * real;
+  state.view.y = cy - (cy - state.view.y) * real;
+  state.view.k = k;
+  if (k === 1) { state.view.x = 0; state.view.y = 0; }
+  schedule();
+}
+document.getElementById("zoom-in").addEventListener("click", () => zoomAt(W / 2, H / 2, 1.5));
+document.getElementById("zoom-out").addEventListener("click", () => zoomAt(W / 2, H / 2, 1 / 1.5));
+document.getElementById("zoom-reset").addEventListener("click", () => { state.view = { k: 1, x: 0, y: 0 }; schedule(); });
+["layer-listings", "layer-shortlist", "layer-competitors"].forEach(id =>
+  document.getElementById(id).addEventListener("change", () => { drawDots(); drawCompetitors(); }));
+
+let frame = 0;
+function schedule() {
+  if (frame) return;
+  frame = requestAnimationFrame(() => { frame = 0; applyView(); });
+}
+
+/* ---------- ranking + detail ---------- */
+function renderRanking() {
+  const ol = document.getElementById("ranking");
+  ol.innerHTML = current.scored.slice(0, TOP_N).map((s, i) => {
+    const before = defaultRanking.rank.get(s.z.id);
+    const diff = before - (i + 1);
+    const cls = diff > 0 ? "up" : diff < 0 ? "down" : "same";
+    const txt = diff > 0 ? `↑${diff}` : diff < 0 ? `↓${-diff}` : "=";
+    const place = s.z.address && s.z.address.road ? s.z.address.road : s.z.neighbourhood;
+    return `<li><button type="button" data-id="${s.z.id}" aria-pressed="${s.z.id === state.selected}">
+      <span class="rank-no">${i + 1}</span>
+      <span class="rank-name"><span class="z">Zona ${s.z.id}</span><span class="n">${place}</span></span>
+      <span class="rank-score">${fmt1(s.index)}</span>
+      <span class="delta ${cls}" title="Puesto con pesos por defecto: ${before}">${txt}</span>
+    </button></li>`;
+  }).join("");
+}
+document.getElementById("ranking").addEventListener("click", e => {
+  const b = e.target.closest("button[data-id]");
+  if (b) select(Number(b.dataset.id));
+});
+
+function renderDetail() {
+  const el = document.getElementById("detail");
+  const z = byId.get(state.selected);
+  const idx = current.index.get(z.id), rank = current.rank.get(z.id), before = defaultRanking.rank.get(z.id);
+  const where = z.address && z.address.road
+    ? `${z.address.road}, ${z.address.postcode} · ${z.address.district} · barrio Airbnb: ${z.neighbourhood}`
+    : `Barrio Airbnb: ${z.neighbourhood}`;
+  const rows = DIMS.map(d => {
+    const s = subScore(z, d);
+    const pts = 100 * current.nw[d.key] * s;
+    return `<div class="dim">
+      <div><div class="name">${d.label}</div><div class="raw"><b>${d.fmt(z.raw[d.key])}</b> ${d.unit}</div></div>
+      <div class="bar" role="img" aria-label="${d.label}: ${Math.round(s * 100)} de 100 frente al resto de zonas"><i style="width:${(s * 100).toFixed(1)}%"></i></div>
+      <div class="pts">${fmt1(pts)}<small>puntos</small></div>
+    </div>`;
+  }).join("");
+  el.innerHTML = `
+    <div class="detail-head">
+      <div><p class="eyebrow">Zona seleccionada</p><h2>Zona ${z.id}</h2><p class="where">${where}</p></div>
+      <div class="big"><div class="v">${fmt1(idx)}</div><div class="l">índice · puesto ${rank} de ${zones.length}${rank !== before ? ` (por defecto: ${before})` : ""}</div></div>
+    </div>
+    <div class="dims">${rows}</div>
+    <div class="meta">
+      <span><b>${int(z.n_listings)}</b> alojamientos</span>
+      <span><b>${int(z.n_competitors)}</b> ${z.n_competitors === 1 ? "competidor" : "competidores"} gourmet a &lt;400&nbsp;m</span>
+      <span>Precio mediano <b>${int(z.price_median)} €</b>/noche</span>
+    </div>
+    <p class="hint">La barra compara la zona con las demás (0 = peor zona de París en ese criterio, lleno = mejor); los puntos son su aportación al índice con los pesos actuales.</p>`;
+}
+
+function select(id) {
+  state.selected = id;
+  recolour(); drawBadges(); renderRanking(); renderDetail();
+}
+
+function update() {
+  current = computeRanking(state.weights);
+  DIMS.forEach(d => { document.getElementById(`p-${d.key}`).textContent = `${Math.round(current.nw[d.key] * 100)} %`; });
+  const isDefault = DIMS.every(d => state.weights[d.key] === defaultWeights[d.key]);
+  document.getElementById("reset").disabled = isDefault;
+  recolour(); drawBadges(); renderRanking(); renderDetail();
+}
+
+/* ---------- boot ---------- */
+function layout() { fit(); buildPaths(); applyView(); }
+readStops();
+state.selected = defaultRanking.scored[0].z.id;
+layout();
+update();
+new ResizeObserver(() => layout()).observe(mapEl);
+const themeChange = () => { readStops(); recolour(); drawTiles(); drawDots(); drawCompetitors(); };
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", themeChange);
+new MutationObserver(themeChange).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+</script>
