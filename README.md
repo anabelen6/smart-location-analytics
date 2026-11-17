@@ -8,7 +8,7 @@ interactive dashboard so the client can explore the result without touching code
 
 **[Open the interactive dashboard](https://anabelen6.github.io/smart-location-analytics/dashboard/paris_dashboard.html)**
 
-![Dashboard](docs/dashboard.png)
+![Dashboard](dashboard.png)
 
 ## The problem
 
